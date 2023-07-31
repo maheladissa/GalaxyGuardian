@@ -66,6 +66,9 @@ window.addEventListener('load', function(){
             this.speed = 3;
             this.markedForDeletion = false;
             this.image = document.getElementById('laser');
+            this.laser = new Audio('./assets/laser.mp3');
+            this.laser.volume = 0.05;
+            this.laser.play();
         }
 
         update(){
@@ -73,6 +76,7 @@ window.addEventListener('load', function(){
             if (this.x > this.game.width * 0.9 + this.width){
                 this.markedForDeletion = true;
             }
+
         }
 
         draw(context){
@@ -529,7 +533,6 @@ window.addEventListener('load', function(){
 
     const game = new Game(canvas.width, canvas.height);
     let lastTime = 0;
-
     //animation
     function animate(timeStamp){
         const deltaTime = (timeStamp - lastTime);
