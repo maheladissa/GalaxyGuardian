@@ -1,4 +1,5 @@
 window.addEventListener('load', function(){
+
     //canvas
     const canvas = document.getElementById("canvas1");
     const ctx = canvas.getContext('2d');
@@ -413,6 +414,9 @@ window.addEventListener('load', function(){
             this.speed = 1 + (this.level * 0.5);
             this.debug = false;
             this.highScore = parseInt(getCookie('highScore')) || 0;
+            this.bgMusic = new Audio('./assets/bg.mp3');
+            this.bgMusic.volume = 1;
+            this.bgMusic.loop = true;
 
 
         }
@@ -538,6 +542,22 @@ window.addEventListener('load', function(){
 
     const game = new Game(canvas.width, canvas.height);
     let lastTime = 0;
+
+    document.addEventListener('click', () => {
+        game.bgMusic.play()
+            .catch(error => {
+                // Autoplay was prevented; handle the error or display a message to the user.
+                console.error('Autoplay was prevented:', error);
+            });
+    });
+
+    document.addEventListener('keydown', () => {
+        game.bgMusic.play()
+            .catch(error => {
+                // Autoplay was prevented; handle the error or display a message to the user.
+                console.error('Autoplay was prevented:', error);
+            });
+    });
     //animation
     function animate(timeStamp){
         const deltaTime = (timeStamp - lastTime);
