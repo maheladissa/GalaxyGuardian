@@ -360,6 +360,11 @@ window.addEventListener('load', function(){
             context.textAlign = 'right';
             context.fillText('High Score: ' + this.game.highScore, this.game.width - 50, 80);
 
+            //instructions
+            context.textAlign = 'right';
+            context.fillText('Press Space to Shoot', this.game.width - 50, this.game.height - 50);
+            context.fillText('Press Up and Down to Move', this.game.width - 50, this.game.height - 20);
+
             //game over
             if (this.game.gameOver){
                 context.textAlign = 'center';
