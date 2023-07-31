@@ -1,3 +1,5 @@
+const laser = new Audio('./assets/laser.mp3');
+
 window.addEventListener('load', function(){
     //canvas
     const canvas = document.getElementById("canvas1");
@@ -116,6 +118,8 @@ window.addEventListener('load', function(){
             if(this.game.ammo > 0) {
                 const projectile = new Projectiles(this.game, this.x + this.width*0.8, this.y+160);
                 this.projectiles.push(projectile);
+                laser.volume = 0.1;
+                laser.play();
                 this.game.ammo--;
             }
         }
@@ -529,7 +533,6 @@ window.addEventListener('load', function(){
 
     const game = new Game(canvas.width, canvas.height);
     let lastTime = 0;
-
     //animation
     function animate(timeStamp){
         const deltaTime = (timeStamp - lastTime);
